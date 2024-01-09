@@ -1,0 +1,34 @@
+name: notifications and alert
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  your_job_name:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          echo "Running build step..."
+
+      - name: Test
+        run: |
+          echo "Running test step..."
+
+      - name: Deploy
+        run: |
+          echo "Running deployment step..."
+
+      - name: Notify success
+        if: success()
+        run: echo "Workflow succeeded!"
+
+      - name: Notify failure
+        if: failure()
+        run: echo "workflow failed!"
